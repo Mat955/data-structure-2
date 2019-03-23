@@ -1,0 +1,30 @@
+body {
+    background-color: #D2F2E8;
+}
+
+.box {
+    display: inline-block;
+    margin: 20px;
+    width: 200px;
+    border: 2px dotted #000;
+    text-align: center;
+    vertical-align: top;
+    opacity: 0.7;
+}
+
+header {
+    display: block;
+    border-bottom: 1px dotted #000;
+}
+
+.highlighted {
+    background-color: #83c58f;
+}
+
+.special-header header {
+    background-color: #BAE8DA;
+}
+
+.important {
+    opacity: 1;
+}
