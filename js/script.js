@@ -34,31 +34,31 @@
 
     var pageWrapper = document.getElementById('container');
 
-    function createBox(boxId, element) {
-        element.setAttribute('id', data[boxId].id);
+    function createBox(boxIndex, element) {
+        element.setAttribute('id', data[boxIndex].id);
         element.classList.add('box');
-    };
+    }
 
-    function createHeader(headerId) {
-        header.innerHTML = data[headerId].title;
-    };
+    function createHeader(headerIndex) {
+        header.innerHTML = data[headerIndex].title;
+    }
 
-    function createContent(contentId, element) {
-        element.innerHTML = data[contentId].content;
-    };
+    function createContent(contentIndex, element) {
+        element.innerHTML = data[contentIndex].content;
+    }
 
-    function createCategories(id, element) {
-        var categories = data[id].categories;
+    function createCategories(index, element) {
+        var categories = data[index].categories;
         for (var i = 0; i < categories.length; i++) {
             element.classList.add(categories[i]);
         }
-    };
+    }
 
-    function addElementsBox(header, paragraph, box) {
+    function addElementsBox(header, paragraph, box, container) {
         box.appendChild(header);
         box.appendChild(paragraph);
-        pageWrapper.appendChild(box);
-    };
+        container.appendChild(box);
+    }
 
     for (var k = 0; k < data.length; k++) {
         var newElement = document.createElement('div');
@@ -71,7 +71,7 @@
         createCategories(k, newElement);
         createContent(k, newElementParagraph);
 
-        addElementsBox(header, newElementParagraph, newElement);
-    };
+        addElementsBox(header, newElementParagraph, newElement, pageWrapper);
+    }
 
 })();
