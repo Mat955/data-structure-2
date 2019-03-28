@@ -34,24 +34,32 @@
 
     var pageWrapper = document.getElementById('container');
 
-    function createBox(boxIndex, element) {
-        element.setAttribute('id', data[boxIndex].id);
-        element.classList.add('box');
+    function createBox(boxIndex, boxElement) {
+        var boxElement = document.createElement('div');
+        boxElement.setAttribute('id', data[boxIndex].id);
+        boxElement.classList.add('box');
+        return boxElement;
     }
 
     function createHeader(headerIndex) {
-        header.innerHTML = data[headerIndex].title;
+        var headerElement = document.createElement('header');
+        headerElement.innerHTML = data[headerIndex].title;
+        return headerElement;
     }
 
-    function createContent(contentIndex, element) {
-        element.innerHTML = data[contentIndex].content;
+    function createContent(contentIndex, contentElement) {
+        var contentElement = document.createElement('div');
+        contentElement.innerHTML = data[contentIndex].content;
+        return contentElement;
     }
 
     function createCategories(index, element) {
+        var categoriesElement = document.createElement('div');
         var categories = data[index].categories;
         for (var i = 0; i < categories.length; i++) {
             element.classList.add(categories[i]);
         }
+        return categoriesElement;
     }
 
     function addElementsBox(header, paragraph, box, container) {
@@ -61,17 +69,12 @@
     }
 
     for (var k = 0; k < data.length; k++) {
-        var newElement = document.createElement('div');
-        var header = document.createElement('header');
-        var content = data[k].content;
-        var newElementParagraph = document.createElement('div');
+        var newElement = createBox(k, newElement);
+        var headerElement = createHeader(k);
+        var content = createCategories(k, newElement);
+        var newElementParagraph = createContent(k, newElementParagraph);
 
-        createBox(k, newElement);
-        createHeader(k);
-        createCategories(k, newElement);
-        createContent(k, newElementParagraph);
-
-        addElementsBox(header, newElementParagraph, newElement, pageWrapper);
+        addElementsBox(headerElement, newElementParagraph, newElement, pageWrapper);
     }
 
 })();
