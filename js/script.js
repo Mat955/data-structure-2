@@ -34,7 +34,7 @@
 
     var pageWrapper = document.getElementById('container');
 
-    function createBox(boxIndex, boxElement) {
+    function createBox(boxIndex) {
         var boxElement = document.createElement('div');
         boxElement.setAttribute('id', data[boxIndex].id);
         boxElement.classList.add('box');
@@ -69,10 +69,10 @@
     }
 
     for (var k = 0; k < data.length; k++) {
-        var newElement = createBox(k, newElement);
+        var newElement = createBox(k);
         var headerElement = createHeader(k);
         var content = createCategories(k, newElement);
-        var newElementParagraph = createContent(k, newElementParagraph);
+        var newElementParagraph = createContent(k, newElement);
 
         addElementsBox(headerElement, newElementParagraph, newElement, pageWrapper);
     }
